@@ -5,6 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "build:data": "node scripts/build-data.js",
+    "prepare:static": "node scripts/prepare-static.js",
     "dev": "node src/server.js",
     "start": "node src/server.js"
   },

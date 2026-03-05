@@ -40,6 +40,18 @@ npm run dev
 
 - `http://localhost:3000`
 
+## GitHub Actions 自動部署（GitHub Pages）
+
+已內建 workflow：`.github/workflows/deploy-pages.yml`
+
+- 觸發：每次 push 到 `main`
+- 輸出：部署 `public/` 到 GitHub Pages
+- 內容準備：`npm run prepare:static` 會自動：
+  - 把 `data/products.json` 複製到 `public/data/products.json`
+  - 生成 `public/404.html`（支援 Pages fallback）
+
+首次使用時，請在 repo `Settings -> Pages` 確認 Source 為 `GitHub Actions`。
+
 ## 專案結構
 
 - `scripts/build-data.js`：Excel -> 護膚資料 JSON 清洗與推斷

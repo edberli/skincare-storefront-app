@@ -232,6 +232,7 @@ function normalizeProfile(input = {}) {
 
 app.use(express.json({ limit: '1mb' }));
 app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use('/data', express.static(path.join(__dirname, '..', 'data')));
 
 app.get('/api/options', (_req, res) => {
   res.json(QUIZ_OPTIONS);
