@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="zh-HK">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>門市客戶導向護膚推薦 App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="top-bar">
+        <div class="brand-area">
+          <p class="brand-kicker">Skin Care Concierge</p>
+          <h1>Lumiere Derm Guide</h1>
+        </div>
+        <div class="top-actions">
+          <button class="ghost-btn" data-nav="home">首頁</button>
+          <button class="ghost-btn" data-nav="search">產品搜尋</button>
+        </div>
+      </header>
+
+      <main class="screen-deck">
+        <section id="screen-home" class="screen active">
+          <div class="soft-pattern"></div>
+          <div class="illustration illustration-home">
+            <span class="doodle leaf"></span>
+            <span class="doodle drop"></span>
+            <span class="doodle sparkle"></span>
+          </div>
+
+          <div class="hero-card">
+            <p class="eyebrow">門市客戶導向體驗</p>
+            <h2>今日幫你搵到真正適合肌膚嘅護膚方案</h2>
+            <p>
+              先做 3 步小測驗，再由 AI 顧問先提供關心式建議，最後先俾產品推薦，減少「被推銷」感。
+            </p>
+            <div class="entrance-grid">
+              <button class="feature-card" id="start-quiz-btn">
+                <p class="feature-title">護膚品</p>
+                <p class="feature-desc">即時開始肌膚測驗與推薦</p>
+              </button>
+              <button class="feature-card disabled" disabled>
+                <p class="feature-title">化妝品</p>
+                <p class="feature-desc">即將推出（入口已預留）</p>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section id="screen-quiz-1" class="screen">
+          <div class="soft-pattern"></div>
+          <div class="quiz-panel">
+            <div class="quiz-head">
+              <p class="step-tag">Step 1 / 3</p>
+              <h2>你嘅膚質係？</h2>
+              <p>可複選，選出最接近現況嘅 1-3 項。</p>
+              <div class="mini-illustration">
+                <span class="icon feather"></span>
+                <span class="icon line"></span>
+              </div>
+            </div>
+            <div id="skin-type-options" class="option-grid"></div>
+            <div class="flow-actions">
+              <button class="ghost-btn" data-nav="home">返回首頁</button>
+              <button class="primary-btn" id="to-step-2-btn">下一步</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="screen-quiz-2" class="screen">
+          <div class="soft-pattern"></div>
+          <div class="quiz-panel">
+            <div class="quiz-head">
+              <p class="step-tag">Step 2 / 3</p>
+              <h2>目前最困擾嘅肌膚狀況？</h2>
+              <p>可複選，建議先揀 2-4 項重點。</p>
+              <div class="mini-illustration">
+                <span class="icon dots"></span>
+                <span class="icon halo"></span>
+              </div>
+            </div>
+            <div id="concern-options" class="option-grid"></div>
+            <div class="flow-actions">
+              <button class="ghost-btn" id="back-step-1-btn">上一步</button>
+              <button class="primary-btn" id="to-step-3-btn">下一步</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="screen-quiz-3" class="screen">
+          <div class="soft-pattern"></div>
+          <div class="quiz-panel">
+            <div class="quiz-head">
+              <p class="step-tag">Step 3 / 3</p>
+              <h2>設定功效目標與使用方式</h2>
+              <p>最後一步，完成後會先收到 AI 關心建議，再出產品名單。</p>
+              <div class="mini-illustration">
+                <span class="icon drop"></span>
+                <span class="icon leaf"></span>
+              </div>
+            </div>
+
+            <div class="group-block">
+              <h3>功效目標</h3>
+              <div id="goal-options" class="option-grid compact"></div>
+            </div>
+
+            <div class="group-row">
+              <div class="group-block half">
+                <h3>品牌來源</h3>
+                <div id="origin-options" class="single-choice"></div>
+              </div>
+              <div class="group-block half">
+                <h3>使用方式</h3>
+                <div id="usage-options" class="single-choice"></div>
+              </div>
+            </div>
+
+            <div class="group-block">
+              <h3>產品類別（可複選）</h3>
+              <div id="category-options" class="option-grid compact"></div>
+            </div>
+
+            <div class="flow-actions">
+              <button class="ghost-btn" id="back-step-2-btn">上一步</button>
+              <button class="primary-btn" id="submit-quiz-btn">生成我的肌膚建議</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="screen-advice" class="screen">
+          <div class="soft-pattern"></div>
+          <div class="result-layout">
+            <div class="result-header">
+              <p class="eyebrow">AI 關心式護膚建議</p>
+              <h2>先照顧肌膚，再選產品</h2>
+            </div>
+
+            <div class="advice-grid">
+              <article class="insight-card">
+                <h3>3-5 個日常護膚技巧</h3>
+                <ul id="care-tips-list"></ul>
+              </article>
+              <article class="insight-card">
+                <h3>請避免常見誤區</h3>
+                <ul id="mistake-list"></ul>
+              </article>
+            </div>
+
+            <article class="routine-card">
+              <h3>簡單 Routine（早/晚）</h3>
+              <div class="routine-split">
+                <div>
+                  <h4>早上</h4>
+                  <ol id="morning-routine"></ol>
+                </div>
+                <div>
+                  <h4>晚上</h4>
+                  <ol id="night-routine"></ol>
+                </div>
+              </div>
+            </article>
+
+            <div class="flow-actions">
+              <button class="ghost-btn" data-nav="quiz-1">重新測驗</button>
+              <button class="primary-btn" id="to-results-btn">查看推薦產品</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="screen-results" class="screen">
+          <div class="soft-pattern"></div>
+          <div class="result-layout">
+            <div class="result-header">
+              <p class="eyebrow">推薦結果</p>
+              <h2>最匹配你當下膚況嘅產品</h2>
+              <p id="result-note" class="result-note"></p>
+            </div>
+            <div id="recommendation-cards" class="card-grid"></div>
+            <div class="flow-actions">
+              <button class="ghost-btn" id="rebuild-plan-btn">重設條件</button>
+              <button class="primary-btn" id="to-routine-flow-btn">查看成套流程</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="screen-search" class="screen">
+          <div class="soft-pattern"></div>
+          <div class="search-layout">
+            <div class="result-header">
+              <p class="eyebrow">反向搜尋</p>
+              <h2>直接搜尋產品，反查適合膚質與步驟</h2>
+            </div>
+            <div class="search-bar">
+              <input id="search-input" type="text" placeholder="輸入產品名、品牌或功效（例如：保濕、VT、防曬）" />
+              <button class="primary-btn" id="search-btn">搜尋</button>
+            </div>
+            <div class="search-grid">
+              <div id="search-results" class="search-results"></div>
+              <aside id="search-detail" class="search-detail empty">搜尋後點選產品查看詳細資訊。</aside>
+            </div>
+          </div>
+        </section>
+
+        <section id="screen-routine" class="screen">
+          <div class="soft-pattern"></div>
+          <div class="result-layout">
+            <div class="result-header">
+              <p class="eyebrow">成套系列流程</p>
+              <h2>由清潔到鎖水嘅可視化護膚步驟</h2>
+            </div>
+            <div id="routine-visual" class="routine-visual"></div>
+            <div class="flow-actions">
+              <button class="ghost-btn" data-nav="results">返回推薦結果</button>
+              <button class="primary-btn" data-nav="search">去反向搜尋</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <template id="chip-template">
+      <button class="chip" type="button"></button>
+    </template>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
