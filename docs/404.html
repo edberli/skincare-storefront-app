@@ -10,14 +10,23 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Orbitron:wght@500;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=20260306-y2k2" />
+    <link rel="stylesheet" href="./styles.css?v=20260306-y2k3" />
   </head>
   <body>
     <div class="app-shell">
+      <div class="y2k-ambient" aria-hidden="true">
+        <span class="ambient-orb orb-a"></span>
+        <span class="ambient-orb orb-b"></span>
+        <span class="ambient-orb orb-c"></span>
+        <span class="ambient-star star-a"></span>
+        <span class="ambient-star star-b"></span>
+      </div>
+
       <header class="top-bar">
         <div class="brand-area">
           <p class="brand-kicker">Skin Care Concierge</p>
           <h1>Lumiere Derm Guide</h1>
+          <p class="brand-sub">Y2K Beauty Navigator 2000</p>
         </div>
         <div class="top-actions">
           <button class="ghost-btn" data-nav="home">首頁</button>
@@ -35,20 +44,34 @@
           </div>
 
           <div class="hero-card">
-            <p class="eyebrow">門市客戶導向體驗</p>
-            <h2>今日幫你搵到真正適合肌膚嘅護膚方案</h2>
-            <p>
-              先做 3 步小測驗，再由 AI 顧問先提供關心式建議，最後先俾產品推薦，減少「被推銷」感。
-            </p>
-            <div class="entrance-grid">
-              <button class="feature-card" id="start-quiz-btn">
-                <p class="feature-title">護膚品</p>
-                <p class="feature-desc">即時開始肌膚測驗與推薦</p>
-              </button>
-              <button class="feature-card disabled" disabled>
-                <p class="feature-title">化妝品</p>
-                <p class="feature-desc">即將推出（入口已預留）</p>
-              </button>
+            <div class="hero-grid">
+              <div class="hero-copy">
+                <p class="eyebrow">門市客戶導向體驗</p>
+                <h2>今日幫你搵到真正適合肌膚嘅護膚方案</h2>
+                <p>
+                  先做 3 步小測驗，再由 AI 顧問先提供關心式建議，最後先俾產品推薦，減少「被推銷」感。
+                </p>
+                <div class="entrance-grid">
+                  <button class="feature-card" id="start-quiz-btn">
+                    <p class="feature-title">護膚品</p>
+                    <p class="feature-desc">即時開始肌膚測驗與推薦</p>
+                  </button>
+                  <button class="feature-card disabled" disabled>
+                    <p class="feature-title">化妝品</p>
+                    <p class="feature-desc">即將推出（入口已預留）</p>
+                  </button>
+                </div>
+              </div>
+              <aside class="hero-art" aria-hidden="true">
+                <p class="art-badge">Y2K SKIN TUNE</p>
+                <div class="art-core"></div>
+                <div class="art-ring"></div>
+                <ul class="art-points">
+                  <li>scan</li>
+                  <li>match</li>
+                  <li>glow</li>
+                </ul>
+              </aside>
             </div>
           </div>
         </section>
@@ -56,6 +79,10 @@
         <section id="screen-quiz-1" class="screen">
           <div class="soft-pattern"></div>
           <div class="quiz-panel">
+            <div class="chrome-ribbon">
+              <span>PROFILE SCAN</span>
+              <span>STEP FLOW</span>
+            </div>
             <div class="quiz-head">
               <p class="step-tag">Step 1 / 3</p>
               <h2>你嘅膚質係？</h2>
@@ -76,6 +103,10 @@
         <section id="screen-quiz-2" class="screen">
           <div class="soft-pattern"></div>
           <div class="quiz-panel">
+            <div class="chrome-ribbon">
+              <span>CONCERN MAP</span>
+              <span>STEP FLOW</span>
+            </div>
             <div class="quiz-head">
               <p class="step-tag">Step 2 / 3</p>
               <h2>目前最困擾嘅肌膚狀況？</h2>
@@ -96,6 +127,10 @@
         <section id="screen-quiz-3" class="screen">
           <div class="soft-pattern"></div>
           <div class="quiz-panel">
+            <div class="chrome-ribbon">
+              <span>TARGET TUNING</span>
+              <span>STEP FLOW</span>
+            </div>
             <div class="quiz-head">
               <p class="step-tag">Step 3 / 3</p>
               <h2>設定功效目標與使用方式</h2>
@@ -139,6 +174,10 @@
           <div class="result-layout">
             <div class="result-header">
               <p class="eyebrow">AI 關心式護膚建議</p>
+              <div class="header-badges" aria-hidden="true">
+                <span>AI CARE CORE</span>
+                <span>Y2K CONSULT</span>
+              </div>
               <h2>先照顧肌膚，再選產品</h2>
             </div>
 
@@ -179,6 +218,10 @@
           <div class="result-layout">
             <div class="result-header">
               <p class="eyebrow">推薦結果</p>
+              <div class="header-badges" aria-hidden="true">
+                <span>MATCH SCORE</span>
+                <span>GLOW LIST</span>
+              </div>
               <h2>最匹配你當下膚況嘅產品</h2>
               <p id="result-note" class="result-note"></p>
             </div>
@@ -195,6 +238,10 @@
           <div class="search-layout">
             <div class="result-header">
               <p class="eyebrow">反向搜尋</p>
+              <div class="header-badges" aria-hidden="true">
+                <span>REVERSE LOOKUP</span>
+                <span>PRODUCT DNA</span>
+              </div>
               <h2>直接搜尋產品，反查適合膚質與步驟</h2>
             </div>
             <div class="search-bar">
@@ -213,6 +260,10 @@
           <div class="result-layout">
             <div class="result-header">
               <p class="eyebrow">成套系列流程</p>
+              <div class="header-badges" aria-hidden="true">
+                <span>ROUTINE MAP</span>
+                <span>STEP MATRIX</span>
+              </div>
               <h2>由清潔到鎖水嘅可視化護膚步驟</h2>
             </div>
             <div id="routine-visual" class="routine-visual"></div>
@@ -229,6 +280,6 @@
       <button class="chip" type="button"></button>
     </template>
 
-    <script src="./app.js?v=20260306-y2k2" defer></script>
+    <script src="./app.js?v=20260306-y2k3" defer></script>
   </body>
 </html>
