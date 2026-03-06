@@ -1,7 +1,6 @@
 const QUIZ_OPTIONS = {
   skinTypes: ['敏感肌', '痘痘肌', '乾肌', '油肌', '混合肌', '熟齡肌', '受損肌', '一般肌'],
   concerns: ['泛紅', '刺痛', '爆痘', '粉刺', '出油', '乾燥脫皮', '暗沉', '斑點', '細紋', '毛孔粗大', '屏障受損'],
-  goals: ['去痘', '淡印', '保濕', '修復', '抗老', '美白提亮', '控油', '收毛孔', '防曬'],
   origins: ['全部', '日本', '韓國'],
   categories: ['洗面', '化妝水', '精華', '乳液', '面霜', '面膜', '防曬', '眼霜', '去角質', '痘痘護理', '安瓶'],
   usageModes: ['成套護膚流程', '單品推薦', '日間', '夜間', '急救']
@@ -70,7 +69,6 @@ function createInitialSelection() {
   return {
     skinTypes: [],
     concerns: [],
-    goals: [],
     brandOrigin: '全部',
     categories: [],
     usageMode: '成套護膚流程'
@@ -147,7 +145,6 @@ function buildSummaryItems() {
   const items = [];
   if (state.selection.skinTypes.length) items.push(`膚質 · ${summarizeList(state.selection.skinTypes, 2)}`);
   if (state.selection.concerns.length) items.push(`狀況 · ${summarizeList(state.selection.concerns, 3)}`);
-  if (state.selection.goals.length) items.push(`目標 · ${summarizeList(state.selection.goals, 3)}`);
   if (state.selection.categories.length) items.push(`類別 · ${summarizeList(state.selection.categories, 3)}`);
   items.push(`品牌來源 · ${state.selection.brandOrigin}`);
   items.push(`使用方式 · ${state.selection.usageMode}`);
@@ -206,11 +203,6 @@ function renderQuiz() {
     renderQuiz();
   });
 
-  renderChoiceCards('goal-options', state.options.goals, state.selection.goals, (value) => {
-    state.selection.goals = toggleValue(state.selection.goals, value);
-    renderQuiz();
-  });
-
   renderChoiceCards('category-options', state.options.categories, state.selection.categories, (value) => {
     state.selection.categories = toggleValue(state.selection.categories, value);
     renderQuiz();
@@ -243,7 +235,6 @@ function normalizeProfile(input = {}) {
   return {
     skinTypes: toArray(input.skinTypes),
     concerns: toArray(input.concerns),
-    goals: toArray(input.goals),
     brandOrigin: input.brandOrigin || '全部',
     categories: toArray(input.categories),
     usageMode: input.usageMode || '單品推薦'
@@ -267,8 +258,7 @@ function scoreProduct(product, profile) {
   let score = 0;
   const matches = {
     skinTypes: [],
-    concerns: [],
-    goals: []
+    concerns: []
   };
 
   if (profile.brandOrigin !== '全部' && product.brandOrigin === profile.brandOrigin) {
@@ -283,11 +273,6 @@ function scoreProduct(product, profile) {
   if (profile.concerns.length > 0) {
     matches.concerns = profile.concerns.filter((item) => toArray(product.concerns).includes(item));
     score += matches.concerns.length * 3;
-  }
-
-  if (profile.goals.length > 0) {
-    matches.goals = profile.goals.filter((item) => toArray(product.goals).includes(item));
-    score += matches.goals.length * 5;
   }
 
   if (profile.categories.length > 0 && profile.categories.includes(product.category)) {
@@ -340,10 +325,6 @@ function buildBundleRecommendations(rankedProducts, usageMode) {
 
 function createReason(profile, matches, product) {
   const chunks = [];
-
-  if (matches.goals.length > 0) {
-    chunks.push(`貼近你想優先處理嘅「${matches.goals.join('、')}」`);
-  }
   if (matches.concerns.length > 0) {
     chunks.push(`對目前「${matches.concerns.join('、')}」較有針對性`);
   }
@@ -374,16 +355,16 @@ function buildCareTips(profile) {
   if (profile.skinTypes.includes('敏感肌') || profile.concerns.includes('刺痛') || profile.concerns.includes('屏障受損')) {
     tips.push('先由溫和潔面、補水同修護打底，新增產品前建議先做局部測試。');
   }
-  if (profile.goals.includes('保濕') || profile.concerns.includes('乾燥脫皮') || profile.skinTypes.includes('乾肌')) {
+  if (profile.concerns.includes('乾燥脫皮') || profile.skinTypes.includes('乾肌')) {
     tips.push('洗面後盡快補水，之後用乳液或面霜封住水分，保濕效果會更穩。');
   }
-  if (profile.goals.includes('去痘') || profile.concerns.includes('爆痘') || profile.concerns.includes('粉刺')) {
+  if (profile.concerns.includes('爆痘') || profile.concerns.includes('粉刺')) {
     tips.push('痘痘護理以薄塗、局部為主，同時維持早晚一次穩定清潔，避免過度處理。');
   }
-  if (profile.goals.includes('抗老') || profile.concerns.includes('細紋') || profile.skinTypes.includes('熟齡肌')) {
+  if (profile.concerns.includes('細紋') || profile.skinTypes.includes('熟齡肌')) {
     tips.push('夜間可把精華同面霜配合使用，集中加強眼周同容易乾紋的位置。');
   }
-  if (profile.goals.includes('防曬') || profile.goals.includes('美白提亮')) {
+  if (profile.concerns.includes('暗沉') || profile.concerns.includes('斑點')) {
     tips.push('日間最後一步記得足量防曬，戶外活動較久時要補擦，先可以穩定亮膚效果。');
   }
 
@@ -407,7 +388,7 @@ function buildAvoidMistakes(profile) {
     '肌膚不穩時一次過換整套產品，會令真正不適來源變得更難判斷。'
   ];
 
-  if (profile.goals.includes('去痘') || profile.concerns.includes('爆痘') || profile.concerns.includes('粉刺')) {
+  if (profile.concerns.includes('爆痘') || profile.concerns.includes('粉刺')) {
     mistakes.push('因為想快啲清走痘痘而過度清潔，反而會令油脂分泌更失衡。');
   }
   if (profile.skinTypes.includes('乾肌') || profile.concerns.includes('乾燥脫皮')) {
@@ -424,7 +405,7 @@ function buildSimpleRoutine(profile) {
   const morning = ['洗面', '化妝水', '精華', '乳液 / 面霜', '防曬'];
   const night = ['洗面', '化妝水', '精華 / 安瓶', '面霜'];
 
-  if (profile.goals.includes('去痘') || profile.concerns.includes('爆痘')) {
+  if (profile.concerns.includes('爆痘') || profile.concerns.includes('粉刺')) {
     night.splice(3, 0, '痘痘護理');
   }
 
@@ -621,7 +602,7 @@ function renderProductCards(targetId, products, config = {}) {
 
   const list = limit ? toArray(products).slice(0, limit) : toArray(products);
   if (list.length === 0) {
-    renderEmptyState(targetId, '暫時未有匹配產品', '你可以放寬品牌來源、類別或者功效目標，再重新生成建議。');
+    renderEmptyState(targetId, '暫時未有匹配產品', '你可以放寬品牌來源、類別或者肌膚狀況，再重新生成建議。');
     return;
   }
 
@@ -667,9 +648,9 @@ function renderRoutineVisual() {
       fallback: '用化妝水先補水，令後續精華更容易貼膚。'
     },
     {
-      title: 'Step 3 目標精華',
+      title: 'Step 3 重點精華',
       categories: ['精華', '安瓶'],
-      fallback: '按你最在意嘅目標，加入重點修護。'
+      fallback: '按你目前肌膚狀況，加入重點修護。'
     },
     {
       title: 'Step 4 鎖水修護',
@@ -853,8 +834,8 @@ function bindFlowEvents() {
   bindClick('#back-step-2-btn', () => showScreen('quiz-2'));
 
   bindClick('#submit-quiz-btn', async () => {
-    if (state.selection.goals.length === 0) {
-      window.alert('建議至少選擇 1 個功效目標。');
+    if (state.selection.concerns.length === 0) {
+      window.alert('請先選擇至少 1 個肌膚狀況。');
       return;
     }
 

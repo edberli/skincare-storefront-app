@@ -3,289 +3,478 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pixel Pink Skincare OS</title>
+    <title>Glow Muse Atelier</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+TC:wght@400;500;700&family=VT323&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=20260306-pixel-pink-1" />
+    <link rel="stylesheet" href="./styles.css?v=20260306-care-lounge-3" />
   </head>
   <body>
-    <div class="bg-layer" aria-hidden="true">
-      <span class="bg-grid"></span>
-      <span class="bg-heart heart-a"></span>
-      <span class="bg-heart heart-b"></span>
-      <span class="bg-star star-a"></span>
-      <span class="bg-star star-b"></span>
-      <span class="bg-star star-c"></span>
+    <div class="ambient-bg" aria-hidden="true">
+      <span class="ambient-orb orb-a"></span>
+      <span class="ambient-orb orb-b"></span>
+      <span class="ambient-orb orb-c"></span>
+      <span class="ambient-line line-a"></span>
+      <span class="ambient-line line-b"></span>
+      <span class="ambient-star star-a"></span>
+      <span class="ambient-star star-b"></span>
     </div>
 
     <div class="app-shell">
-      <div class="retro-window">
-        <header class="window-titlebar">
-          <div class="title-left">
-            <span class="title-dot"></span>
-            <div>
-              <p class="title-kicker">Pixel Beauty Assistant v2.0</p>
-              <h1>Rosy Skin Station</h1>
+      <header class="app-header">
+        <button class="brand-panel" type="button" data-nav="home">
+          <p class="brand-kicker">Storefront Skincare Guide</p>
+          <div class="brand-lockup">
+            <h1>Glow Muse Atelier</h1>
+            <p>門市客戶導向護膚推薦 App</p>
+          </div>
+        </button>
+
+        <nav class="header-nav" aria-label="主導覽">
+          <button class="nav-pill" type="button" data-nav="home">首頁</button>
+          <button class="nav-pill" type="button" data-nav="quiz-1">肌膚小測驗</button>
+          <button class="nav-pill" type="button" data-nav="advice">肌膚建議</button>
+          <button class="nav-pill" type="button" data-nav="results">推薦結果</button>
+          <button class="nav-pill" type="button" data-nav="search">產品搜尋</button>
+          <button class="nav-pill" type="button" data-nav="routine">護膚流程</button>
+        </nav>
+      </header>
+
+      <main class="screen-stack">
+        <section id="screen-home" class="screen active theme-home">
+          <div class="screen-shell hero-shell">
+            <div class="hero-copy">
+              <p class="section-kicker">Customer-first beauty consultation</p>
+              <h2>先了解你嘅膚況，再溫柔地幫你揀啱護膚品。</h2>
+              <p class="lead">
+                介面會直接喺客人面前展示，所以重點唔係賣貨，而係先令客人感覺被理解、被照顧。由肌膚小測驗、護膚建議到產品配搭，一步一步幫人由「唔知揀咩」走到「知道點揀」。
+              </p>
+
+              <div class="cta-row">
+                <button class="primary-btn" id="start-quiz-btn" type="button">開始肌膚小測驗</button>
+                <button class="secondary-btn" type="button" data-nav="search">直接搜尋產品</button>
+              </div>
+
+              <div class="entry-grid">
+                <article class="entry-card featured">
+                  <div>
+                    <p class="card-kicker">Now open</p>
+                    <h3>護膚品推薦</h3>
+                    <p>按膚質、肌膚狀況、品牌來源同使用方式，整理出最適合嘅選擇。</p>
+                  </div>
+                  <button class="text-link" type="button" data-nav="quiz-1">進入推薦流程</button>
+                </article>
+                <article class="entry-card muted">
+                  <div>
+                    <p class="card-kicker">Coming soon</p>
+                    <h3>化妝品入口</h3>
+                    <p>已預留入口，之後可接底妝、唇妝、眼妝同妝容建議流程。</p>
+                  </div>
+                  <span class="status-pill">即將推出</span>
+                </article>
+              </div>
+
+              <div class="stat-row">
+                <article class="stat-card">
+                  <strong id="catalog-count">0</strong>
+                  <span>護膚產品資料</span>
+                </article>
+                <article class="stat-card">
+                  <strong id="japan-count">0</strong>
+                  <span>日本品牌選擇</span>
+                </article>
+                <article class="stat-card">
+                  <strong id="korea-count">0</strong>
+                  <span>韓國品牌選擇</span>
+                </article>
+              </div>
+            </div>
+
+            <div class="hero-visual" aria-hidden="true">
+              <div class="visual-card">
+                <div class="sketch-bottle"></div>
+                <div class="sketch-drop"></div>
+                <div class="sketch-leaf"></div>
+                <div class="sketch-wave"></div>
+                <div class="sketch-star"></div>
+                <article class="mini-brief">
+                  <p>顧問式流程</p>
+                  <h3>Quiz -> Advice -> Match</h3>
+                  <span>柔和手繪線條、珍珠感卡片同少量 Y2K 氛圍，令客人更想停留。</span>
+                </article>
+              </div>
             </div>
           </div>
-          <div class="title-actions" aria-hidden="true">
-            <span class="ctrl-btn">_</span>
-            <span class="ctrl-btn">▢</span>
-            <span class="ctrl-btn close">×</span>
+
+          <div class="trust-grid">
+            <article class="trust-card motif-feather">
+              <span class="motif-badge"></span>
+              <h3>先照顧感受</h3>
+              <p>文案同顯示方式以安心、被理解為主，避免內部工具感同硬銷感。</p>
+            </article>
+            <article class="trust-card motif-drop">
+              <span class="motif-badge"></span>
+              <h3>一步一步易揀</h3>
+              <p>由膚況到使用情境，逐步收窄選擇，客人唔會被大量產品壓住。</p>
+            </article>
+            <article class="trust-card motif-leaf">
+              <span class="motif-badge"></span>
+              <h3>可直接講解</h3>
+              <p>先講技巧、誤區、routine，再出產品卡片，方便門市即場顧問式講解。</p>
+            </article>
           </div>
-        </header>
+        </section>
 
-        <div class="window-content">
-          <aside class="sidebar">
-            <button class="nav-btn" type="button" data-nav="home">主畫面</button>
-            <button class="nav-btn" type="button" data-nav="quiz-1">肌膚測驗</button>
-            <button class="nav-btn" type="button" data-nav="results">推薦結果</button>
-            <button class="nav-btn" type="button" data-nav="search">反向搜尋</button>
-            <button class="nav-btn" type="button" data-nav="routine">成套流程</button>
-
-            <div class="pet-sticker-card" aria-hidden="true">
-              <p class="sticker-title">PIXEL FRIENDS</p>
-              <div class="pet-row">
-                <span class="pixel-pet bear"></span>
-                <span class="pixel-pet cat"></span>
+        <section id="screen-quiz-1" class="screen theme-quiz theme-feather">
+          <div class="screen-shell">
+            <div class="screen-head">
+              <div>
+                <p class="section-kicker">Skin Quiz / Step 1</p>
+                <h2>你而家最接近邊一種膚質？</h2>
+                <p class="lead small">可複選 1 至 3 項，以最近兩星期整體感受為主。</p>
               </div>
-              <div class="sticker-tags">
-                <span>SOFT</span>
-                <span>PINK</span>
-                <span>Y2K</span>
+              <div class="progress-card">
+                <p>肌膚小測驗</p>
+                <div class="progress-bar"><span style="width: 33%"></span></div>
+                <div class="progress-meta">
+                  <span class="is-active">膚質</span>
+                  <span>狀況</span>
+                  <span>設定</span>
+                </div>
               </div>
             </div>
-          </aside>
 
-          <main class="desktop">
-            <section id="screen-home" class="screen active">
-              <article class="panel">
-                <header class="panel-head">
-                  <p class="panel-kicker">HOME / CUSTOMER MODE</p>
-                  <div class="panel-gloss" aria-hidden="true"></div>
-                </header>
+            <div class="question-layout">
+              <aside class="question-note">
+                <span class="note-icon motif motif-feather"></span>
+                <h3>先由膚感出發</h3>
+                <p>如果你同時有乾同出油，都可以一齊揀，之後系統會再按狀況細分。</p>
+                <ul class="helper-list">
+                  <li>轉季容易刺痛或泛紅，可以先加選敏感肌。</li>
+                  <li>T 區易出油、面頰偏乾，多數係混合肌。</li>
+                </ul>
+              </aside>
 
-                <div class="home-layout">
-                  <div class="hero-copy">
-                    <h2>粉紅像素風門市推薦台</h2>
-                    <p>
-                      呢個版本以復古電腦介面重設，俾客人一步步揀出適合嘅護膚品。先做小測驗，再直接睇推薦結果，化妝品入口已經預留。
-                    </p>
+              <div class="question-panel">
+                <div id="skin-type-options" class="choice-grid"></div>
+              </div>
+            </div>
 
-                    <div class="hero-actions">
-                      <button class="primary-btn" id="start-quiz-btn" type="button">開始肌膚測驗</button>
-                      <button class="ghost-btn" type="button" data-nav="search">直接搜尋產品</button>
+            <div class="flow-actions">
+              <button class="ghost-btn" type="button" data-nav="home">返回首頁</button>
+              <button class="primary-btn" id="to-step-2-btn" type="button">下一步：肌膚狀況</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="screen-quiz-2" class="screen theme-quiz theme-water">
+          <div class="screen-shell">
+            <div class="screen-head">
+              <div>
+                <p class="section-kicker">Skin Quiz / Step 2</p>
+                <h2>目前最困擾你嘅肌膚狀況係咩？</h2>
+                <p class="lead small">可複選 2 至 4 項，愈貼近當下，建議會愈準確。</p>
+              </div>
+              <div class="progress-card">
+                <p>肌膚小測驗</p>
+                <div class="progress-bar"><span style="width: 66%"></span></div>
+                <div class="progress-meta">
+                  <span>膚質</span>
+                  <span class="is-active">狀況</span>
+                  <span>設定</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="question-layout">
+              <aside class="question-note">
+                <span class="note-icon motif motif-ripple"></span>
+                <h3>聚焦最困擾嘅事</h3>
+                <p>唔需要全揀。最建議先選最明顯、最想改善嘅幾項。</p>
+                <ul class="helper-list">
+                  <li>泛紅、刺痛、屏障受損，通常代表要先穩定修護。</li>
+                  <li>爆痘、粉刺、出油，可以配合控油同局部護理思路。</li>
+                </ul>
+              </aside>
+
+              <div class="question-panel">
+                <div id="concern-options" class="choice-grid"></div>
+              </div>
+            </div>
+
+            <div class="flow-actions">
+              <button class="ghost-btn" id="back-step-1-btn" type="button">上一步</button>
+              <button class="primary-btn" id="to-step-3-btn" type="button">下一步：品牌與使用方式</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="screen-quiz-3" class="screen theme-quiz theme-leaf">
+          <div class="screen-shell">
+            <div class="screen-head">
+              <div>
+                <p class="section-kicker">Skin Quiz / Step 3</p>
+                <h2>設定品牌偏好同使用方式。</h2>
+                <p class="lead small">完成後會先顯示護膚建議，再展示產品推薦結果。</p>
+              </div>
+              <div class="progress-card">
+                <p>肌膚小測驗</p>
+                <div class="progress-bar"><span style="width: 100%"></span></div>
+                <div class="progress-meta">
+                  <span>膚質</span>
+                  <span>狀況</span>
+                  <span class="is-active">設定</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="quiz-groups">
+              <div class="dual-grid">
+                <article class="group-card">
+                  <div class="group-head">
+                    <div>
+                      <p class="card-kicker">品牌來源</p>
+                      <h3>偏好日本、韓國，定全部都睇？</h3>
                     </div>
+                    <span class="hint-pill">單選</span>
+                  </div>
+                  <div id="origin-options" class="choice-grid single"></div>
+                </article>
 
-                    <div class="entry-grid">
-                      <button class="entry-card" type="button" data-nav="quiz-1">
-                        <strong>護膚品推薦</strong>
-                        <span>依膚質、狀況、目標快速配對</span>
-                      </button>
-                      <article class="entry-card disabled" aria-disabled="true">
-                        <strong>化妝品（即將推出）</strong>
-                        <span>已預留入口：底妝、唇妝、眼妝</span>
-                      </article>
+                <article class="group-card">
+                  <div class="group-head">
+                    <div>
+                      <p class="card-kicker">使用方式</p>
+                      <h3>想拎到一套 routine，定先睇某種場景？</h3>
                     </div>
+                    <span class="hint-pill">單選</span>
+                  </div>
+                  <div id="usage-options" class="choice-grid single"></div>
+                </article>
+              </div>
 
-                    <div class="stat-row">
-                      <article class="stat-card">
-                        <strong id="catalog-count">0</strong>
-                        <span>護膚產品</span>
-                      </article>
-                      <article class="stat-card">
-                        <strong id="japan-count">0</strong>
-                        <span>日本品牌</span>
-                      </article>
-                      <article class="stat-card">
-                        <strong id="korea-count">0</strong>
-                        <span>韓國品牌</span>
-                      </article>
+              <article class="group-card wide">
+                <div class="group-head">
+                  <div>
+                    <p class="card-kicker">產品類別</p>
+                    <h3>如果你想指定某啲類別，可以先喺度揀。</h3>
+                  </div>
+                  <span class="hint-pill">可複選</span>
+                </div>
+                <div id="category-options" class="choice-grid compact"></div>
+              </article>
+            </div>
+
+            <div class="flow-actions">
+              <button class="ghost-btn" id="back-step-2-btn" type="button">上一步</button>
+              <button class="primary-btn" id="submit-quiz-btn" type="button">生成我嘅肌膚建議</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="screen-advice" class="screen theme-advice">
+          <div class="screen-shell">
+            <div class="screen-head wide-head">
+              <div>
+                <p class="section-kicker">Your Skin Advice</p>
+                <h2>你嘅肌膚建議已經整理好。</h2>
+                <p class="lead small" id="advice-note">先睇保養節奏同常見誤區，再揀產品會更安心。</p>
+              </div>
+              <article class="profile-card">
+                <p>目前檔案</p>
+                <div id="advice-profile" class="summary-cloud"></div>
+              </article>
+            </div>
+
+            <div class="advice-grid">
+              <article class="insight-card">
+                <div class="insight-head">
+                  <span class="motif motif-drop"></span>
+                  <div>
+                    <p class="card-kicker">Daily care</p>
+                    <h3>3-5 個日常護膚技巧</h3>
+                  </div>
+                </div>
+                <ul id="care-tips-list" class="insight-list"></ul>
+              </article>
+
+              <article class="insight-card">
+                <div class="insight-head">
+                  <span class="motif motif-dots"></span>
+                  <div>
+                    <p class="card-kicker">Avoid this</p>
+                    <h3>常見誤區提醒</h3>
+                  </div>
+                </div>
+                <ul id="mistake-list" class="insight-list"></ul>
+              </article>
+
+              <article class="insight-card routine-card">
+                <div class="insight-head">
+                  <span class="motif motif-halo"></span>
+                  <div>
+                    <p class="card-kicker">Routine</p>
+                    <h3>建議護膚節奏</h3>
+                  </div>
+                </div>
+                <div class="routine-columns">
+                  <div>
+                    <h4>早上</h4>
+                    <ol id="morning-routine" class="routine-list"></ol>
+                  </div>
+                  <div>
+                    <h4>晚上</h4>
+                    <ol id="night-routine" class="routine-list"></ol>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="preview-block">
+              <div class="preview-head">
+                <div>
+                  <p class="section-kicker">Curated Picks</p>
+                  <h3>先睇幾款最值得優先了解嘅產品</h3>
+                </div>
+                <button class="secondary-btn" id="to-results-btn" type="button">查看完整推薦</button>
+              </div>
+              <div id="advice-product-preview" class="product-grid preview"></div>
+            </div>
+
+            <div class="flow-actions">
+              <button class="ghost-btn" id="rebuild-plan-btn" type="button">重新測驗</button>
+              <button class="primary-btn" id="to-routine-flow-btn" type="button">看成套護膚流程</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="screen-results" class="screen theme-results">
+          <div class="screen-shell">
+            <div class="screen-head wide-head">
+              <div>
+                <p class="section-kicker">Recommendation Result</p>
+                <h2>以下係根據你嘅條件，最值得先睇嘅護膚產品。</h2>
+                <p class="lead small" id="result-note">完成小測驗後，呢度會顯示完整推薦結果。</p>
+              </div>
+              <article class="profile-card">
+                <p>篩選摘要</p>
+                <div id="results-profile" class="summary-cloud"></div>
+                <strong class="result-count"><span id="result-count">0</span> 款建議</strong>
+              </article>
+            </div>
+
+            <div id="recommendation-cards" class="product-grid"></div>
+
+            <div class="flow-actions">
+              <button class="ghost-btn" type="button" data-nav="advice">返回肌膚建議</button>
+              <button class="secondary-btn" type="button" data-nav="search">反向搜尋產品</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="screen-search" class="screen theme-search">
+          <div class="screen-shell">
+            <div class="screen-head wide-head">
+              <div>
+                <p class="section-kicker">Reverse Search</p>
+                <h2>知道產品名都可以反向查，睇清楚佢適合邊類肌膚。</h2>
+                <p class="lead small">可搜尋產品名稱、品牌、類別或者功效關鍵字。</p>
+              </div>
+              <article class="profile-card slim">
+                <p>搜尋方向</p>
+                <div class="summary-cloud static-cloud">
+                  <span class="summary-chip">產品名稱</span>
+                  <span class="summary-chip">品牌</span>
+                  <span class="summary-chip">功效</span>
+                  <span class="summary-chip">類別</span>
+                </div>
+              </article>
+            </div>
+
+            <div class="search-toolbar">
+              <label class="search-bar" for="search-input">
+                <input id="search-input" type="search" placeholder="例如：AHC、修復精華、面膜、防曬" />
+              </label>
+              <button class="primary-btn" id="search-btn" type="button">搜尋產品</button>
+            </div>
+
+            <div class="keyword-row" aria-label="熱門搜尋">
+              <button class="keyword-chip" type="button" data-keyword="敏感肌">敏感肌</button>
+              <button class="keyword-chip" type="button" data-keyword="保濕">保濕</button>
+              <button class="keyword-chip" type="button" data-keyword="面膜">面膜</button>
+              <button class="keyword-chip" type="button" data-keyword="防曬">防曬</button>
+              <button class="keyword-chip" type="button" data-keyword="修復">修復</button>
+              <button class="keyword-chip" type="button" data-keyword="精華">精華</button>
+            </div>
+
+            <div class="search-layout">
+              <div class="search-results-panel">
+                <div class="panel-title-row">
+                  <h3>搜尋結果</h3>
+                  <span id="search-total" class="search-total">0 項</span>
+                </div>
+                <div id="search-results" class="search-results"></div>
+              </div>
+
+              <aside class="search-detail-panel">
+                <div id="search-detail" class="search-detail empty">搜尋後點選產品，即可查看適合膚質、功效、搭配建議同護膚步驟位置。</div>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <section id="screen-routine" class="screen theme-routine">
+          <div class="screen-shell">
+            <div class="screen-head wide-head">
+              <div>
+                <p class="section-kicker">Routine Visual</p>
+                <h2>成套系列流程可以咁樣理解。</h2>
+                <p class="lead small">由清潔到防護，一步步可視化，方便門市同客人一齊睇。</p>
+              </div>
+              <article class="profile-card slim">
+                <p>流程提示</p>
+                <div class="summary-cloud static-cloud">
+                  <span class="summary-chip">洗面</span>
+                  <span class="summary-chip">化妝水</span>
+                  <span class="summary-chip">精華</span>
+                  <span class="summary-chip">面霜</span>
+                  <span class="summary-chip">防曬</span>
+                </div>
+              </article>
+            </div>
+
+            <div class="routine-stage">
+              <div id="routine-visual" class="routine-flow"></div>
+              <aside class="routine-notes">
+                <article class="insight-card compact-card">
+                  <div class="insight-head">
+                    <span class="motif motif-leaf"></span>
+                    <div>
+                      <p class="card-kicker">Consulting note</p>
+                      <h3>講解重點</h3>
                     </div>
                   </div>
+                  <ul class="insight-list static-list">
+                    <li>先由膚況出發，唔好一次過把全部高功能產品疊上去。</li>
+                    <li>如果客人偏乾或屏障不穩，先強調補水同修護，再談美白抗老。</li>
+                    <li>日間流程保持清爽，夜間流程可加入重點修護或急救步驟。</li>
+                  </ul>
+                </article>
+              </aside>
+            </div>
 
-                  <div class="hero-pixel" aria-hidden="true">
-                    <div class="pixel-window">
-                      <span class="pixel-pet bear big"></span>
-                      <span class="pixel-pet cat big"></span>
-                      <p>CHOOSE -> MATCH -> GLOW</p>
-                    </div>
-                    <div class="motif-tile tile-drop"></div>
-                    <div class="motif-tile tile-star"></div>
-                    <div class="motif-tile tile-flower"></div>
-                  </div>
-                </div>
-              </article>
-            </section>
-
-            <section id="screen-quiz-1" class="screen">
-              <article class="panel">
-                <header class="panel-head">
-                  <p class="panel-kicker">QUIZ / STEP 1 OF 3</p>
-                  <div class="step-chip">膚質</div>
-                </header>
-                <h2>你目前最接近邊種膚質？</h2>
-                <p class="panel-note">可複選 1-3 項。先揀最貼近你最近兩星期嘅感覺。</p>
-
-                <div class="note-strip" aria-hidden="true">
-                  <span class="pixel-pet bear"></span>
-                  <p>熊仔提示：如果 T 區油但面頰乾，可以同時揀「混合肌」+「乾肌」。</p>
-                </div>
-
-                <div id="skin-type-options" class="option-grid"></div>
-
-                <div class="flow-actions">
-                  <button class="ghost-btn" type="button" data-nav="home">返回主畫面</button>
-                  <button class="primary-btn" id="to-step-2-btn" type="button">下一步</button>
-                </div>
-              </article>
-            </section>
-
-            <section id="screen-quiz-2" class="screen">
-              <article class="panel">
-                <header class="panel-head">
-                  <p class="panel-kicker">QUIZ / STEP 2 OF 3</p>
-                  <div class="step-chip">狀況</div>
-                </header>
-                <h2>而家最困擾你嘅肌膚狀況係咩？</h2>
-                <p class="panel-note">可複選 2-4 項，先集中最想改善嘅問題。</p>
-
-                <div class="note-strip" aria-hidden="true">
-                  <span class="pixel-pet cat"></span>
-                  <p>貓仔提示：唔使全揀，聚焦重點會令推薦更準確。</p>
-                </div>
-
-                <div id="concern-options" class="option-grid"></div>
-
-                <div class="flow-actions">
-                  <button class="ghost-btn" id="back-step-1-btn" type="button">上一步</button>
-                  <button class="primary-btn" id="to-step-3-btn" type="button">下一步</button>
-                </div>
-              </article>
-            </section>
-
-            <section id="screen-quiz-3" class="screen">
-              <article class="panel">
-                <header class="panel-head">
-                  <p class="panel-kicker">QUIZ / STEP 3 OF 3</p>
-                  <div class="step-chip">目標與方式</div>
-                </header>
-                <h2>設定功效目標、品牌來源與使用方式</h2>
-                <p class="panel-note">完成後會直接顯示產品推薦結果。</p>
-
-                <div class="form-grid">
-                  <section class="group-card wide">
-                    <h3>功效目標（可複選）</h3>
-                    <div id="goal-options" class="option-grid compact"></div>
-                  </section>
-
-                  <section class="group-card">
-                    <h3>品牌來源（單選）</h3>
-                    <div id="origin-options" class="single-choice"></div>
-                  </section>
-
-                  <section class="group-card">
-                    <h3>使用方式（單選）</h3>
-                    <div id="usage-options" class="single-choice"></div>
-                  </section>
-
-                  <section class="group-card wide">
-                    <h3>產品類別（可複選）</h3>
-                    <div id="category-options" class="option-grid compact"></div>
-                  </section>
-                </div>
-
-                <div class="flow-actions">
-                  <button class="ghost-btn" id="back-step-2-btn" type="button">上一步</button>
-                  <button class="primary-btn" id="submit-quiz-btn" type="button">生成推薦結果</button>
-                </div>
-              </article>
-            </section>
-
-            <section id="screen-results" class="screen">
-              <article class="panel">
-                <header class="panel-head">
-                  <p class="panel-kicker">RESULT / MATCHED PRODUCTS</p>
-                  <div class="step-chip">已完成配對</div>
-                </header>
-                <h2>最匹配你當下膚況嘅產品</h2>
-                <p id="result-note" class="panel-note">完成測驗後，呢度會顯示最匹配嘅產品卡片。</p>
-                <p class="result-counter">已整理 <strong id="result-count">0</strong> 款建議</p>
-
-                <div class="result-toolbar">
-                  <button class="ghost-btn" id="rebuild-plan-btn" type="button">重新測驗</button>
-                  <button class="ghost-btn" id="to-routine-flow-btn" type="button">查看成套流程</button>
-                  <button class="ghost-btn" type="button" data-nav="search">反向搜尋</button>
-                </div>
-
-                <div id="recommendation-cards" class="card-grid"></div>
-              </article>
-            </section>
-
-            <section id="screen-search" class="screen">
-              <article class="panel">
-                <header class="panel-head">
-                  <p class="panel-kicker">REVERSE SEARCH</p>
-                  <div class="step-chip">產品反查</div>
-                </header>
-                <h2>直接搜產品，反查適合膚質與步驟</h2>
-                <p class="panel-note">輸入產品名、品牌、類別或功效關鍵字。</p>
-                <p class="result-counter">搜尋結果：<strong id="search-total">0 項</strong></p>
-
-                <div class="search-toolbar">
-                  <input id="search-input" type="search" placeholder="例如：AHC、面膜、保濕、防曬" />
-                  <button class="primary-btn" id="search-btn" type="button">搜尋</button>
-                </div>
-
-                <div class="quick-tags" aria-label="快速關鍵字">
-                  <button class="quick-chip" type="button" data-keyword="敏感肌">敏感肌</button>
-                  <button class="quick-chip" type="button" data-keyword="保濕">保濕</button>
-                  <button class="quick-chip" type="button" data-keyword="修復">修復</button>
-                  <button class="quick-chip" type="button" data-keyword="防曬">防曬</button>
-                  <button class="quick-chip" type="button" data-keyword="精華">精華</button>
-                  <button class="quick-chip" type="button" data-keyword="面膜">面膜</button>
-                </div>
-
-                <div class="search-layout">
-                  <div id="search-results" class="search-results"></div>
-                  <aside id="search-detail" class="search-detail empty">搜尋後點選產品查看詳細資訊。</aside>
-                </div>
-              </article>
-            </section>
-
-            <section id="screen-routine" class="screen">
-              <article class="panel">
-                <header class="panel-head">
-                  <p class="panel-kicker">ROUTINE FLOW</p>
-                  <div class="step-chip">可視化流程</div>
-                </header>
-                <h2>成套護膚流程</h2>
-                <p class="panel-note">由清潔到防護，一步一步清楚展示。</p>
-
-                <div id="routine-visual" class="routine-visual"></div>
-
-                <div class="flow-actions">
-                  <button class="ghost-btn" type="button" data-nav="results">返回推薦結果</button>
-                  <button class="ghost-btn" type="button" data-nav="home">返回主畫面</button>
-                </div>
-              </article>
-            </section>
-          </main>
-        </div>
-
-        <footer class="taskbar" aria-hidden="true">
-          <span class="task-pill">Pixel Pink Mode</span>
-          <span class="task-pill">Store Demo</span>
-          <span class="task-pill">Y2K Retro</span>
-          <span class="clock">03:20 PM</span>
-        </footer>
-      </div>
+            <div class="flow-actions">
+              <button class="ghost-btn" type="button" data-nav="results">返回推薦結果</button>
+              <button class="secondary-btn" type="button" data-nav="home">回首頁</button>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
 
-    <script src="./app.js?v=20260306-pixel-pink-1"></script>
+    <script src="./app.js?v=20260306-care-lounge-3"></script>
   </body>
 </html>
