@@ -3,7 +3,7 @@ const QUIZ_OPTIONS = {
   concerns: ['泛紅', '刺痛', '爆痘', '粉刺', '出油', '乾燥脫皮', '暗沉', '斑點', '細紋', '毛孔粗大', '屏障受損'],
   origins: ['全部', '日本', '韓國'],
   categories: ['洗面', '化妝水', '精華', '乳液', '面霜', '面膜', '防曬', '眼霜', '去角質', '痘痘護理', '安瓶'],
-  usageModes: ['成套護膚流程', '單品推薦', '日間', '夜間', '急救']
+  usageModes: ['成套護膚流程', '日間', '夜間', '急救']
 };
 
 const OPTION_META = {
@@ -49,7 +49,6 @@ const OPTION_META = {
   '痘痘護理': { motif: 'dots', hint: '適合局部針對使用，唔建議厚敷全臉。' },
   安瓶: { motif: 'bottle', hint: '高濃度集中修護，適合特定時期加入。' },
   '成套護膚流程': { motif: 'halo', hint: '想一次拎到完整 steps 同配搭思路。' },
-  '單品推薦': { motif: 'bottle', hint: '先鎖定最值得先試的一件主力產品。' },
   日間: { motif: 'sun', hint: '偏向清爽、穩定、防護感較高的組合。' },
   夜間: { motif: 'moon', hint: '適合加強修護、滋養同重點護理。' },
   急救: { motif: 'plus', hint: '當膚況不穩時，先集中舒緩同修護。' }
@@ -171,7 +170,7 @@ function renderSummaryCloud(targetId) {
 }
 
 function renderChoiceCards(containerId, options, selectedValue, onChange, config = {}) {
-  const { single = false } = config;
+  const { single = false, disabled = false } = config;
   const root = document.getElementById(containerId);
   if (!root) return;
 
@@ -183,11 +182,14 @@ function renderChoiceCards(containerId, options, selectedValue, onChange, config
 
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = `chip ${isSelected ? 'selected' : ''}`;
+    button.className = `chip ${isSelected ? 'selected' : ''} ${disabled ? 'is-disabled' : ''}`;
     button.textContent = option;
     button.title = meta.hint;
+    button.disabled = disabled;
 
-    button.addEventListener('click', () => onChange(option));
+    if (!disabled) {
+      button.addEventListener('click', () => onChange(option));
+    }
     root.appendChild(button);
   });
 }
@@ -203,10 +205,25 @@ function renderQuiz() {
     renderQuiz();
   });
 
+  const isRoutineMode = state.selection.usageMode === '成套護膚流程';
+  if (isRoutineMode && state.selection.categories.length > 0) {
+    state.selection.categories = [];
+  }
+
   renderChoiceCards('category-options', state.options.categories, state.selection.categories, (value) => {
     state.selection.categories = toggleValue(state.selection.categories, value);
     renderQuiz();
-  });
+  }, { disabled: isRoutineMode });
+
+  const categoryGroup = document.getElementById('category-group');
+  if (categoryGroup) {
+    categoryGroup.classList.toggle('is-locked', isRoutineMode);
+  }
+
+  const categoryLockNote = document.getElementById('category-lock-note');
+  if (categoryLockNote) {
+    categoryLockNote.hidden = !isRoutineMode;
+  }
 
   renderChoiceCards('origin-options', state.options.origins, state.selection.brandOrigin, (value) => {
     state.selection.brandOrigin = value;
@@ -237,14 +254,16 @@ function normalizeProfile(input = {}) {
     concerns: toArray(input.concerns),
     brandOrigin: input.brandOrigin || '全部',
     categories: toArray(input.categories),
-    usageMode: input.usageMode || '單品推薦'
+    usageMode: input.usageMode || '成套護膚流程'
   };
 }
 
 function productMatchesBasicFilters(product, profile) {
   if (profile.brandOrigin !== '全部' && product.brandOrigin !== profile.brandOrigin) return false;
 
-  if (profile.categories.length > 0 && !profile.categories.includes(product.category)) return false;
+  if (profile.usageMode !== '成套護膚流程' && profile.categories.length > 0 && !profile.categories.includes(product.category)) {
+    return false;
+  }
 
   if (profile.skinTypes.length > 0) {
     const hasSkinMatch = profile.skinTypes.some((item) => toArray(product.suitableSkinTypes).includes(item));
@@ -275,7 +294,7 @@ function scoreProduct(product, profile) {
     score += matches.concerns.length * 3;
   }
 
-  if (profile.categories.length > 0 && profile.categories.includes(product.category)) {
+  if (profile.usageMode !== '成套護膚流程' && profile.categories.length > 0 && profile.categories.includes(product.category)) {
     score += 2;
   }
 

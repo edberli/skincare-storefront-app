@@ -596,6 +596,16 @@ h2 {
   grid-column: 1 / -1;
 }
 
+.group-card.is-locked {
+  opacity: 0.78;
+}
+
+.field-note {
+  margin: 0 0 8px;
+  font-size: 0.82rem;
+  color: #8a5a87;
+}
+
 .single-choice {
   display: flex;
   flex-wrap: wrap;
@@ -632,6 +642,16 @@ h2 {
   border-right-color: #804778;
   border-bottom-color: #804778;
   font-weight: 700;
+}
+
+.chip.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.52;
+  background: linear-gradient(180deg, #fff7fd, #ffeaf6);
+}
+
+.chip.is-disabled:hover {
+  background: linear-gradient(180deg, #fff7fd, #ffeaf6);
 }
 
 .primary-btn,
